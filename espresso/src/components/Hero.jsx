@@ -41,7 +41,7 @@ function Hero() {
           playsInline
           poster="/src/assets/images/hero-poster.jpg"
         >
-          <source src="/src/assets/videos/hero.mp4" type="video/mp4" />
+          <source src="/src/assets/videos/video.mp4" type="video/mp4" />
         </video>
         <div className="hero__overlay" />
       </motion.div>

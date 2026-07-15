@@ -57,7 +57,7 @@ function Footer() {
           <ul className="footer__contact">
             <li>
               <HiOutlineLocationMarker />
-              <span>12 Boulevard Anfa, Casablanca, Morocco</span>
+              <span>Casablanca, Morocco</span>
             </li>
             <li>
               <HiOutlinePhone />

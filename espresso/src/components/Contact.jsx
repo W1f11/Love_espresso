@@ -1,58 +1,74 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   HiOutlineMail,
   HiOutlinePhone,
   HiOutlineLocationMarker,
   HiOutlineClock,
-} from 'react-icons/hi'
-import { FaWhatsapp } from 'react-icons/fa'
+} from "react-icons/hi";
+import { FaWhatsapp } from "react-icons/fa";
 
-const EASE = [0.16, 1, 0.3, 1]
+const EASE = [0.16, 1, 0.3, 1];
 
 const CONTACT_INFO = [
   {
     icon: HiOutlineClock,
-    label: 'Opening Hours',
-    lines: ['Mon – Fri: 7:30 AM – 10:00 PM', 'Sat – Sun: 8:00 AM – 11:00 PM'],
+    label: "Opening Hours",
+    lines: [
+      "Mon – Fri: 7:30 AM – 10:00 PM",
+      "Sat – Sun: 8:00 AM – 11:00 PM",
+    ],
   },
   {
     icon: HiOutlineLocationMarker,
-    label: 'Address',
-    lines: ['12 Boulevard Anfa', 'Casablanca, Morocco'],
+    label: "Address",
+    lines: ["Casablanca, Morocco"],
   },
   {
     icon: HiOutlinePhone,
-    label: 'Phone',
-    lines: ['+212 6 00 00 00 00'],
+    label: "Phone",
+    lines: ["+212 6 00 00 00 00"],
   },
   {
     icon: HiOutlineMail,
-    label: 'Email',
-    lines: ['hello@espressolove.ma'],
+    label: "Email",
+    lines: ["hello@espressolove.ma"],
   },
-]
+];
 
-const WHATSAPP_NUMBER = '212600000000'
+const WHATSAPP_NUMBER = "212600000000";
 
-const initialForm = { name: '', email: '', phone: '', message: '' }
+const initialForm = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
 
 function Contact() {
-  const [form, setForm] = useState(initialForm)
-  const [status, setStatus] = useState('idle') // idle | success
+  const [form, setForm] = useState(initialForm);
+  const [status, setStatus] = useState("idle");
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setForm((prev) => ({ ...prev, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // No backend wired up — swap this for a real request handler.
-    setStatus('success')
-    setForm(initialForm)
-    setTimeout(() => setStatus('idle'), 4000)
-  }
+    e.preventDefault();
+
+    // Ici tu pourras connecter EmailJS ou un backend plus tard.
+
+    setStatus("success");
+    setForm(initialForm);
+
+    setTimeout(() => {
+      setStatus("idle");
+    }, 4000);
+  };
 
   return (
     <section id="contact" className="section contact">
@@ -67,6 +83,7 @@ function Contact() {
           >
             Contact
           </motion.span>
+
           <motion.h2
             className="section-heading"
             initial={{ opacity: 0, y: 20 }}
@@ -79,17 +96,19 @@ function Contact() {
         </div>
 
         <div className="contact__grid">
+          {/* FORM */}
           <motion.form
             className="contact__form glass-panel"
             onSubmit={handleSubmit}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
+            viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, ease: EASE }}
           >
             <div className="contact__field-row">
               <div className="contact__field">
                 <label htmlFor="name">Name</label>
+
                 <input
                   id="name"
                   name="name"
@@ -100,8 +119,10 @@ function Contact() {
                   required
                 />
               </div>
+
               <div className="contact__field">
                 <label htmlFor="phone">Phone</label>
+
                 <input
                   id="phone"
                   name="phone"
@@ -115,6 +136,7 @@ function Contact() {
 
             <div className="contact__field">
               <label htmlFor="email">Email</label>
+
               <input
                 id="email"
                 name="email"
@@ -128,10 +150,11 @@ function Contact() {
 
             <div className="contact__field">
               <label htmlFor="message">Message</label>
+
               <textarea
                 id="message"
                 name="message"
-                rows="4"
+                rows={4}
                 placeholder="Tell us about your visit — a reservation, an event, or just a hello."
                 value={form.message}
                 onChange={handleChange}
@@ -139,32 +162,41 @@ function Contact() {
               />
             </div>
 
-            <button type="submit" className="btn btn-primary contact__submit">
+            <button
+              type="submit"
+              className="btn btn-primary contact__submit"
+            >
               Send Message
             </button>
 
             <AnimatePresence>
-              {status === 'success' && (
+              {status === "success" && (
                 <motion.p
                   className="contact__success"
+                  role="status"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4, ease: EASE }}
-                  role="status"
                 >
-                  Thank you — your message has been sent. We'll be in touch shortly.
+                  Thank you — your message has been sent. We'll be in touch
+                  shortly.
                 </motion.p>
               )}
             </AnimatePresence>
           </motion.form>
 
+          {/* CONTACT INFO */}
           <motion.div
             className="contact__info"
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{
+              duration: 0.7,
+              ease: EASE,
+              delay: 0.1,
+            }}
           >
             <ul className="contact__info-list">
               {CONTACT_INFO.map((item) => (
@@ -172,8 +204,10 @@ function Contact() {
                   <span className="contact__info-icon">
                     <item.icon />
                   </span>
+
                   <div>
                     <h3>{item.label}</h3>
+
                     {item.lines.map((line) => (
                       <p key={line}>{line}</p>
                     ))}
@@ -182,14 +216,31 @@ function Contact() {
               ))}
             </ul>
 
-            <div className="contact__map" role="img" aria-label="Map showing Espresso Love location in Casablanca">
-              <HiOutlineLocationMarker />
-              <span>Map integration goes here</span>
+            {/* MAP */}
+            <div className="contact__map">
+              <iframe
+                title="Espresso Love Location"
+                src="https://www.google.com/maps?q=33.5989251,-7.533137&z=16&output=embed"
+                loading="lazy"
+                allowFullScreen
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+
+              <a
+                href="https://maps.app.goo.gl/bWkdkikoSPUuSHDy5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact__map-link"
+              >
+                <HiOutlineLocationMarker />
+                <span>Open in Google Maps</span>
+              </a>
             </div>
           </motion.div>
         </div>
       </div>
 
+      {/* WhatsApp Button */}
       <motion.a
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
@@ -201,11 +252,15 @@ function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: EASE }}
       >
-        <span className="whatsapp-fab__pulse" aria-hidden="true" />
+        <span
+          className="whatsapp-fab__pulse"
+          aria-hidden="true"
+        ></span>
+
         <FaWhatsapp />
       </motion.a>
     </section>
-  )
+  );
 }
 
-export default Contact
+export default Contact;

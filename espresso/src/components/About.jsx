@@ -74,7 +74,7 @@ function About() {
           transition={{ duration: 0.9, ease: EASE }}
         >
           <img
-            src="/src/assets/images/about-barista.jpg"
+            src="/src/assets/images/about.jpg"
             alt="Barista carefully pouring latte art at Espresso Love"
           />
           <div className="about__media-frame" aria-hidden="true" />
