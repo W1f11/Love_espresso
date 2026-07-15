@@ -39,7 +39,7 @@ function Hero() {
           loop
           muted
           playsInline
-          poster="/src/assets/images/hero-poster.jpg"
+          poster="../assets/images/hero-poster.jpg"
         >
           <source src="/src/assets/videos/video.mp4" type="video/mp4" />
         </video>
