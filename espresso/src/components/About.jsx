@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { motion, useInView, animate } from 'framer-motion'
 import { GiCoffeeBeans, GiFruitBowl, GiCupcake, GiSofa } from 'react-icons/gi'
 import { PiHandHeartFill } from 'react-icons/pi'
+import aboutImage from '../assets/images/about.jpg'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -73,10 +74,7 @@ function About() {
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 0.9, ease: EASE }}
         >
-          <img
-            src="/src/assets/images/about.jpg"
-            alt="Barista carefully pouring latte art at Espresso Love"
-          />
+          <img src={aboutImage} alt="Barista carefully pouring latte art at Espresso Love" />
           <div className="about__media-frame" aria-hidden="true" />
         </motion.div>
 

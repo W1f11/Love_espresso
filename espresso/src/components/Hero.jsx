@@ -2,6 +2,8 @@ import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { PiCoffeeBeanFill } from 'react-icons/pi'
 import { HiOutlineArrowDown } from 'react-icons/hi'
+import heroPoster from '../assets/images/about.jpg'
+import heroVideo from '../assets/videos/video.mp4'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -39,9 +41,9 @@ function Hero() {
           loop
           muted
           playsInline
-          poster="../assets/images/hero-poster.jpg"
+          poster={heroPoster}
         >
-          <source src="/src/assets/videos/video.mp4" type="video/mp4" />
+          <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="hero__overlay" />
       </motion.div>
